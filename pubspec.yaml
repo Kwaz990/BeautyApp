@@ -26,6 +26,7 @@ flutter:
 
   assets:
       - assets/login_logo.png
+      - assets/spidey.jpeg
 
   fonts:
     - family: WorkSansSemiBold
