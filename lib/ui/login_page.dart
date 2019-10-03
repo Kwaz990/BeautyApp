@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as prefix0;
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:the_gorgeous_login/style/theme.dart' as Theme;
@@ -7,7 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'lib/ui/client_login.dart';
-
+import 'package:flutter/widgets.dart';
 
 
 
@@ -60,51 +61,49 @@ class LoginPage extends StatefulWidget {
 //Added by KO
 class _LoginPageState extends State<LoginPage> 
     with SingleTickerProviderStateMixin {
-      List<Widget> pages = [
-        ClientLogin()
-              ];
-              Widget _buildTabController(BuildContext context) {
-            return DefaultTabController(
-              length: 5,
-              initialIndex: 0,
-              child: Scaffold(
-                body: TabBarView(
-                  children: pages),
-                  bottomNavigationBar: Container(
-                  // decoration: BoxDecoration(
-                  //   boxShadow: [
-                  //     BoxShadow(
-                  //       offset: Offset(10, 10)
-                  //     )
-                  //   ]
-                  // ),
-                  margin: EdgeInsets.only(bottom: 20),
-                  child: new TabBar(
-                    tabs: [
-                      Tab(
-                        icon: Icon(Icons.home),
-                      ),
-                      Tab(
-                        icon: Icon(Icons.search),
-                      ),
-                      Tab(
-                        icon: Icon(Icons.add),
-                      ),
-                      Tab(
-                        icon: Icon(Icons.favorite),
-                      ),
-                      Tab(
-                        icon: Icon(Icons.perm_identity),
-                      ),
-                    ],
-                    unselectedLabelColor: Colors.black,
-                    labelColor: Colors.blue,
-                    indicatorColor: Colors.transparent,
-                  ),
-                ),
-              ),
-            );
-          }
+
+          //     Widget _buildTabController(BuildContext context) {
+          //   return DefaultTabController(
+          //     length: 5,
+          //     initialIndex: 0,
+          //     child: Scaffold(
+          //       body: TabBarView(
+          //         children: pages),
+          //         bottomNavigationBar: Container(
+          //         // decoration: BoxDecoration(
+          //         //   boxShadow: [
+          //         //     BoxShadow(
+          //         //       offset: Offset(10, 10)
+          //         //     )
+          //         //   ]
+          //         // ),
+          //         margin: EdgeInsets.only(bottom: 20),
+          //         child: new TabBar(
+          //           tabs: [
+          //             Tab(
+          //               icon: Icon(Icons.home),
+          //             ),
+          //             Tab(
+          //               icon: Icon(Icons.search),
+          //             ),
+          //             Tab(
+          //               icon: Icon(Icons.add),
+          //             ),
+          //             Tab(
+          //               icon: Icon(Icons.favorite),
+          //             ),
+          //             Tab(
+          //               icon: Icon(Icons.perm_identity),
+          //             ),
+          //           ],
+          //           unselectedLabelColor: Colors.black,
+          //           labelColor: Colors.blue,
+          //           indicatorColor: Colors.transparent,
+          //         ),
+          //       ),
+          //     ),
+          //   );
+          // }
             
         
         
@@ -780,45 +779,128 @@ class ClientLandingPage extends StatefulWidget {
 }
 
 class _ClientLangingPageState extends State<ClientLandingPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Column(children: <Widget>[
-        Container(
-          height: 100, 
-          color: Colors.red,),
-          Container(
-            constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.height- 168),
-            child: ListView(
-              padding: EdgeInsets.zero,
-              children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(20),
-                  height: 250,
-                  child: Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: new BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: new DecorationImage(
-                                fit: BoxFit.fill,
-                                image: new AssetImage('assets/img/spidey.jpeg')
-                              ),)
-                            // child: new Image(
-                            //  // CircleAvatar(backgroundImage: 'assets/img/spidey.jpeg',), 
-                            //   image: new AssetImage('assets/img/spidey.jpeg'),
-                          ),
-              ],)]),
-          ) 
-      ]
-      ),)],),);
-      }
-      }
+        int selectedIndex = 0;
+        final widgetOptions = [
+          Text('Search'),
+          Text('Me'),
+          Text('More')
+        ];
+
+  get onItemTapped => null;
+      //   List<Widget> pages = [
+      //  // ClientLogin()
+      //         ];
+ // @override
+  // Widget build(BuildContext context) {
+  //   return Container(
+  //     color: Colors.white,
+  //     child: Column(children: <Widget>[
+  //       Container(
+  //         height: 100, 
+  //         color: Colors.red,),
+  //         Container(
+  //           constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.height- 168),
+  //           child: ListView(
+  //             padding: EdgeInsets.zero,
+  //             children: <Widget>[
+  //               Container(
+  //                 margin: EdgeInsets.all(20),
+  //                 height: 250,
+  //                 child: Column(
+  //                   children: <Widget>[
+  //                     Row(
+  //                       children: <Widget>[
+  //                         Container(
+  //                           height: 50,
+  //                           width: 50,
+  //                           decoration: new BoxDecoration(
+  //                             shape: BoxShape.circle,
+  //                             image: new DecorationImage(
+  //                               fit: BoxFit.fill,
+  //                               image: new AssetImage('assets/img/spidey.jpeg')
+  //                             ),)
+  //                           // child: new Image(
+  //                           //  // CircleAvatar(backgroundImage: 'assets/img/spidey.jpeg',), 
+  //                           //   image: new AssetImage('assets/img/spidey.jpeg'),
+  //                         ),
+  //             ],)]),
+  //         ) 
+  //     ]
+  //     ),)],),);
+  //     }
+
+Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text('SwiftBeauty'),),
+      body: Center(
+        child: widgetOptions.elementAt(selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.search),
+            title: Text('Search')),
+          BottomNavigationBarItem(icon: Icon(Icons.home),
+            title: Text('Me')),
+          BottomNavigationBarItem(icon: Icon(Icons.more_horiz),
+            title: Text('More'))
+        ],
+        currentIndex: selectedIndex,
+        fixedColor: Colors.deepPurple,
+        onTap: onItemTapped,
+  ), ); 
+}
+void buildSelectedIndex(int index) {
+  setState(() {
+      selectedIndex = index;
+    });
+  } 
+}
+      
+      
+      //       return DefaultTabController(
+      //         length: 5,
+      //         initialIndex: 0,
+      //         child: Scaffold(
+      //           body: TabBarView(
+      //             children: pages),
+      //             bottomNavigationBar: Container(
+      //             // decoration: BoxDecoration(
+      //             //   boxShadow: [
+      //             //     BoxShadow(
+      //             //       offset: Offset(10, 10)
+      //             //     )
+      //             //   ]
+      //             // ),
+      //             margin: EdgeInsets.only(bottom: 20),
+      //             child: <Widget> [ new IconButton((
+      //               tabs: [
+      //                 Tab(
+      //                   icon: Icon(Icons.home),
+      //                 ),
+      //                 Tab(
+      //                   icon: Icon(Icons.search),
+      //                 ),
+      //                 Tab(
+      //                   icon: Icon(Icons.add),
+      //                 ),
+      //                 Tab(
+      //                   icon: Icon(Icons.favorite),
+      //                 ),
+      //                 Tab(
+      //                   icon: Icon(Icons.perm_identity),
+      //                 ),
+      //               ],
+      //               unselectedLabelColor: Colors.black,
+      //               labelColor: Colors.blue,
+      //               indicatorColor: Colors.transparent,
+      //             ), icon: null,
+      //           ),
+      //         ),
+      //       );
+      //     }
+
+  
 
 
 
@@ -858,14 +940,4 @@ class _ClientLangingPageState extends State<ClientLandingPage> {
 //                           height: 191.0,
 //                           fit: BoxFit.fill,
 //                           image: new AssetImage('assets/img/login_logo.png')),
-//                     ),
-
-          
-//                         ],
-//                       ),
-//                 ),
-//               ),
-//             ),
-//     );
-//   }
-// }
+//                
