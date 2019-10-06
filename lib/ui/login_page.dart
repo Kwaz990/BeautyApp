@@ -7,9 +7,11 @@ import 'package:the_gorgeous_login/utils/bubble_indication_painter.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'client_login.dart';
 import 'lib/ui/client_login.dart';
 import 'package:flutter/widgets.dart';
-
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:async';
 
 
 
@@ -769,136 +771,148 @@ class _LoginPageState extends State<LoginPage>
             });
           }
         
-          static ClientLogin() {}
+          static clientLogin() {}
 }
 
-//class ClientLandingPage extends StatelessWidget {
-class ClientLandingPage extends StatefulWidget {
-  @override
-  _ClientLangingPageState createState() => _ClientLangingPageState();
-}
+// //class ClientLandingPage extends StatelessWidget {
+// class ClientLandingPage extends StatefulWidget {
+//   @override
+//   _ClientLangingPageState createState() => _ClientLangingPageState();
+// }
 
-class _ClientLangingPageState extends State<ClientLandingPage> {
-        int selectedIndex = 0;
-        final widgetOptions = [
-          Text('Search'),
-          Text('Me'),
-          Text('More')
-        ];
+// class _ClientLangingPageState extends State<ClientLandingPage> {
+//   int selectedIndex = 0;
+//   final widgetOptions = [
+//     Text('Search'),
+//     Text('Me'),
+//     Text('More')
+//       ];
 
-  get onItemTapped => null;
-      //   List<Widget> pages = [
-      //  // ClientLogin()
-      //         ];
- // @override
-  // Widget build(BuildContext context) {
-  //   return Container(
-  //     color: Colors.white,
-  //     child: Column(children: <Widget>[
-  //       Container(
-  //         height: 100, 
-  //         color: Colors.red,),
-  //         Container(
-  //           constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.height- 168),
-  //           child: ListView(
-  //             padding: EdgeInsets.zero,
-  //             children: <Widget>[
-  //               Container(
-  //                 margin: EdgeInsets.all(20),
-  //                 height: 250,
-  //                 child: Column(
-  //                   children: <Widget>[
-  //                     Row(
-  //                       children: <Widget>[
-  //                         Container(
-  //                           height: 50,
-  //                           width: 50,
-  //                           decoration: new BoxDecoration(
-  //                             shape: BoxShape.circle,
-  //                             image: new DecorationImage(
-  //                               fit: BoxFit.fill,
-  //                               image: new AssetImage('assets/img/spidey.jpeg')
-  //                             ),)
-  //                           // child: new Image(
-  //                           //  // CircleAvatar(backgroundImage: 'assets/img/spidey.jpeg',), 
-  //                           //   image: new AssetImage('assets/img/spidey.jpeg'),
-  //                         ),
-  //             ],)]),
-  //         ) 
-  //     ]
-  //     ),)],),);
-  //     }
+//   Completer<GoogleMapController> _controller = Completer();
 
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: Text('SwiftBeauty'),),
-      body: Center(
-        child: widgetOptions.elementAt(selectedIndex),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.search),
-            title: Text('Search')),
-          BottomNavigationBarItem(icon: Icon(Icons.home),
-            title: Text('Me')),
-          BottomNavigationBarItem(icon: Icon(Icons.more_horiz),
-            title: Text('More'))
-        ],
-        currentIndex: selectedIndex,
-        fixedColor: Colors.deepPurple,
-        onTap: onItemTapped,
-  ), ); 
-}
-void buildSelectedIndex(int index) {
-  setState(() {
-      selectedIndex = index;
-    });
-  } 
-}
+//   static const LatLng _center = const LatLng(40.807790, -73.945608);
+
+//   void _onMapCreated(GoogleMapController controller) {
+//     _controller.complete(controller);
+//   }
+
+//   get onItemTapped => null;
+//       //   List<Widget> pages = [
+//       //  // ClientLogin()
+//       //         ];
+//  // @override
+  
+
+// Widget build(BuildContext context) {
+//   // Implementing bottom navigation bar
+//   return Scaffold(
+//     appBar: AppBar(
+//       title: Text('SwiftBeauty'),),
+//       body: Center(
+//         child: widgetOptions.elementAt(selectedIndex),
+//       ),
+//       bottomNavigationBar: BottomNavigationBar(
+//         items: <BottomNavigationBarItem>[
+//           BottomNavigationBarItem(icon: Icon(Icons.search),
+//             title: Text('Search')),
+//           BottomNavigationBarItem(icon: Icon(Icons.home),
+//             title: Text('Me')),
+//           BottomNavigationBarItem(icon: Icon(Icons.more_horiz),
+//             title: Text('More'))
+//         ],
+//         currentIndex: selectedIndex,
+//         fixedColor: Colors.deepPurple,
+//         onTap: onItemTapped,
+//   ), ); 
+// }
+// void buildSelectedIndex(int index) {
+//   setState(() {
+//       selectedIndex = index;
+//     });
+//   } 
+
+// // TODO: get profile working
+// Widget buildProfilePicture(BuildContext context) {
+//     return Container(
+//       color: Colors.white,
+//       child: Column(children: <Widget>[
+//         Container(
+//           height: 100, 
+//           color: Colors.red,),
+//           Container(
+//             constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.height- 168),
+//             child: ListView(
+//               padding: EdgeInsets.zero,
+//               children: <Widget>[
+//                 Container(
+//                   margin: EdgeInsets.all(20),
+//                   height: 250,
+//                   child: Column(
+//                     children: <Widget>[
+//                       Row(
+//                         children: <Widget>[
+//                           Container(
+//                             height: 50,
+//                             width: 50,
+//                             decoration: new BoxDecoration(
+//                               shape: BoxShape.circle,
+//                               image: new DecorationImage(
+//                                 fit: BoxFit.fill,
+//                                 image: new AssetImage('assets/img/spidey.jpeg')
+//                               ),)
+//                             // child: new Image(
+//                             //  // CircleAvatar(backgroundImage: 'assets/img/spidey.jpeg',), 
+//                             //   image: new AssetImage('assets/img/spidey.jpeg'),
+//                           ),
+//               ],)]),
+//           ) 
+//       ]
+//       ),)],),);
+//       }
       
+// }
       
-      //       return DefaultTabController(
-      //         length: 5,
-      //         initialIndex: 0,
-      //         child: Scaffold(
-      //           body: TabBarView(
-      //             children: pages),
-      //             bottomNavigationBar: Container(
-      //             // decoration: BoxDecoration(
-      //             //   boxShadow: [
-      //             //     BoxShadow(
-      //             //       offset: Offset(10, 10)
-      //             //     )
-      //             //   ]
-      //             // ),
-      //             margin: EdgeInsets.only(bottom: 20),
-      //             child: <Widget> [ new IconButton((
-      //               tabs: [
-      //                 Tab(
-      //                   icon: Icon(Icons.home),
-      //                 ),
-      //                 Tab(
-      //                   icon: Icon(Icons.search),
-      //                 ),
-      //                 Tab(
-      //                   icon: Icon(Icons.add),
-      //                 ),
-      //                 Tab(
-      //                   icon: Icon(Icons.favorite),
-      //                 ),
-      //                 Tab(
-      //                   icon: Icon(Icons.perm_identity),
-      //                 ),
-      //               ],
-      //               unselectedLabelColor: Colors.black,
-      //               labelColor: Colors.blue,
-      //               indicatorColor: Colors.transparent,
-      //             ), icon: null,
-      //           ),
-      //         ),
-      //       );
-      //     }
+//       //       return DefaultTabController(
+//       //         length: 5,
+//       //         initialIndex: 0,
+//       //         child: Scaffold(
+//       //           body: TabBarView(
+//       //             children: pages),
+//       //             bottomNavigationBar: Container(
+//       //             // decoration: BoxDecoration(
+//       //             //   boxShadow: [
+//       //             //     BoxShadow(
+//       //             //       offset: Offset(10, 10)
+//       //             //     )
+//       //             //   ]
+//       //             // ),
+//       //             margin: EdgeInsets.only(bottom: 20),
+//       //             child: <Widget> [ new IconButton((
+//       //               tabs: [
+//       //                 Tab(
+//       //                   icon: Icon(Icons.home),
+//       //                 ),
+//       //                 Tab(
+//       //                   icon: Icon(Icons.search),
+//       //                 ),
+//       //                 Tab(
+//       //                   icon: Icon(Icons.add),
+//       //                 ),
+//       //                 Tab(
+//       //                   icon: Icon(Icons.favorite),
+//       //                 ),
+//       //                 Tab(
+//       //                   icon: Icon(Icons.perm_identity),
+//       //                 ),
+//       //               ],
+//       //               unselectedLabelColor: Colors.black,
+//       //               labelColor: Colors.blue,
+//       //               indicatorColor: Colors.transparent,
+//       //             ), icon: null,
+//       //           ),
+//       //         ),
+//       //       );
+//       //     }
 
   
 
@@ -906,38 +920,38 @@ void buildSelectedIndex(int index) {
 
 
 
-//  @override
-//   Widget build(BuildContext context) {
-//     return new Scaffold(
-//       body: NotificationListener<OverscrollIndicatorNotification>(
-//         onNotification: (overscroll) {
-//           overscroll.disallowGlow();
-//         },
-//         child: SingleChildScrollView(
-//               child: Container(
-//                 width: MediaQuery.of(context).size.width,
-//                 height: MediaQuery.of(context).size.height >= 775.0
-//                     ? MediaQuery.of(context).size.height
-//                     : 775.0,
-//                 decoration: new BoxDecoration(
-//                   gradient: new LinearGradient(
-//                       colors: [
-//                         Theme.Colors.loginGradientStart,
-//                         Theme.Colors.loginGradientEnd
-//                       ],
-//                       begin: const FractionalOffset(0.0, 0.0),
-//                       end: const FractionalOffset(1.0, 1.0),
-//                       stops: [0.0, 1.0],
-//                       tileMode: TileMode.clamp),
-//                 ),
-//                 child: Column(
-//                   mainAxisSize: MainAxisSize.max,
-//                   children: <Widget>[
-//                     Padding(
-//                       padding: EdgeInsets.only(top: 75.0),
-//                       child: new Image(
-//                           width: 250.0,
-//                           height: 191.0,
-//                           fit: BoxFit.fill,
-//                           image: new AssetImage('assets/img/login_logo.png')),
-//                
+// //  @override
+// //   Widget build(BuildContext context) {
+// //     return new Scaffold(
+// //       body: NotificationListener<OverscrollIndicatorNotification>(
+// //         onNotification: (overscroll) {
+// //           overscroll.disallowGlow();
+// //         },
+// //         child: SingleChildScrollView(
+// //               child: Container(
+// //                 width: MediaQuery.of(context).size.width,
+// //                 height: MediaQuery.of(context).size.height >= 775.0
+// //                     ? MediaQuery.of(context).size.height
+// //                     : 775.0,
+// //                 decoration: new BoxDecoration(
+// //                   gradient: new LinearGradient(
+// //                       colors: [
+// //                         Theme.Colors.loginGradientStart,
+// //                         Theme.Colors.loginGradientEnd
+// //                       ],
+// //                       begin: const FractionalOffset(0.0, 0.0),
+// //                       end: const FractionalOffset(1.0, 1.0),
+// //                       stops: [0.0, 1.0],
+// //                       tileMode: TileMode.clamp),
+// //                 ),
+// //                 child: Column(
+// //                   mainAxisSize: MainAxisSize.max,
+// //                   children: <Widget>[
+// //                     Padding(
+// //                       padding: EdgeInsets.only(top: 75.0),
+// //                       child: new Image(
+// //                           width: 250.0,
+// //                           height: 191.0,
+// //                           fit: BoxFit.fill,
+// //                           image: new AssetImage('assets/img/login_logo.png')),
+// //                

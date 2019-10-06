@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:the_gorgeous_login/ui/login_page.dart';
 import 'ui/client_login.dart';
+import 'dart:async';
 
 void main() => runApp(new MyApp());
 
